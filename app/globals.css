@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────── Base ───────────────────────── */
+@layer base {
+  :root {
+    --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-mist text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  /* Selection in soft leaf */
+  ::selection {
+    background: #cfe6b3;
+    color: #14160f;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid #3e6b23;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ───────────────────────── Components ───────────────────────── */
+@layer components {
+  /* The eyebrow / kicker label used across sections (deep leaf on light) */
+  .eyebrow {
+    @apply text-[0.72rem] font-sans font-semibold uppercase tracking-luxe text-leaf-deep;
+  }
+
+  /* Short leaf rule — a recurring motif under section labels */
+  .hairline {
+    @apply h-[3px] w-12 rounded-full bg-leaf;
+  }
+
+  /* Fluid display type for hero headlines */
+  .display {
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  /* Lead paragraph */
+  .lead {
+    @apply text-lg font-normal leading-relaxed text-stone md:text-xl;
+  }
+
+  /* Underline-on-hover for text links */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-right scale-x-0 bg-leaf transition-transform duration-300;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* Soft vertical fade used under hero / over-image text for legibility */
+  .img-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(20, 22, 15, 0.66) 0%,
+      rgba(20, 22, 15, 0.22) 45%,
+      rgba(20, 22, 15, 0) 78%
+    );
+  }
+}
