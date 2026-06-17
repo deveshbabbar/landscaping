@@ -1,22 +1,15 @@
 import { Phone } from "lucide-react";
 import { HERO, CTA, SITE } from "@/lib/site-data";
 import { Button } from "@/components/ui/Button";
-import { SmartImage } from "@/components/ui/SmartImage";
+import { HeroVideo } from "@/components/HeroVideo";
 
-/** Full-bleed hero with a slow ken-burns drift and legibility scrim. */
+/** Full-bleed hero with a muted, looping build time-lapse behind the headline. */
 export function Hero() {
   return (
     <section className="relative min-h-[100svh] w-full overflow-hidden">
-      <SmartImage
-        src={HERO.image}
-        alt={HERO.imageAlt}
-        priority
-        sizes="100vw"
-        className="absolute inset-0 h-full w-full"
-        imgClassName="animate-ken-burns"
-      />
+      <HeroVideo src={HERO.video} poster={HERO.image} posterAlt={HERO.imageAlt} />
       <div className="absolute inset-0 img-scrim" aria-hidden="true" />
-      <div className="absolute inset-0 bg-olive/20" aria-hidden="true" />
+      <div className="absolute inset-0 bg-olive/30" aria-hidden="true" />
 
       <div className="relative mx-auto flex min-h-[100svh] max-w-content flex-col items-start justify-end px-[var(--gutter)] pb-32 pt-32 md:justify-center md:pb-28">
         <div className="max-w-3xl animate-fade-in">

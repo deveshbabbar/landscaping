@@ -94,9 +94,12 @@ export const HERO = {
   title: "Your backyard, reimagined.",
   subtitle:
     "Stoneward designs and builds award-winning outdoor spaces across DFW — patios, outdoor kitchens, custom pools, pergolas, and landscape lighting. One in-house team, from 3D design to the final plant.",
-  image: img("1600585154340-be6161a56a0c", 2400),
+  image: "/images/backyard-after-dusk.png",
   imageAlt:
-    "Modern Dallas home at dusk with a lit, landscaped backyard and mature shade tree",
+    "Finished Frisco backyard at dusk with a pool, fire feature, outdoor kitchen, and landscape lighting",
+  /** Hero background time-lapse (muted, looped, autoplay; reduced-motion safe).
+   *  Swap for your own build/reveal clip in /public/videos. */
+  video: "/videos/hero-build-timelapse.mp4",
 };
 
 export type TrustBadge = { value: string; label: string };
@@ -427,32 +430,35 @@ export type BeforeAfter = {
   beforeAlt: string;
   after: string;
   afterAlt: string;
+  /** Optional slider badges; default to "Before" / "After". */
+  beforeLabel?: string;
+  afterLabel?: string;
 };
 
+/** Real same-property before/after pairs. Drop new project photos into
+ *  /public/images and point these paths at them. */
 export const BEFORE_AFTER: BeforeAfter[] = [
   {
     title: "Full Backyard Transformation",
     location: "Frisco, TX",
-    before: imgBefore("1505691938895-1758d7feb511", 1600),
-    beforeAlt: "Plain, undeveloped backyard before the Stoneward renovation",
-    after: img("1582268611958-ebfd161ef9cf", 1600),
-    afterAlt: "Finished backyard with pool, outdoor kitchen, and dining area",
+    before: "/images/backyard-before.png",
+    beforeAlt:
+      "Bare backyard with cracked concrete and dead grass before the Stoneward build",
+    after: "/images/backyard-after-day.png",
+    afterAlt:
+      "Finished backyard with a pool and spa, travertine patio, pergola, and outdoor kitchen",
   },
   {
-    title: "Paver Patio & Pergola",
-    location: "Plano, TX",
-    before: imgBefore("1620626011761-996317b8d101", 1600),
-    beforeAlt: "Bare side yard before paver patio and pergola installation",
-    after: img("1600573472592-401b489a3cdc", 1600),
-    afterAlt: "Completed paver courtyard with a shade structure and seating",
-  },
-  {
-    title: "Custom Pool & Spa",
-    location: "Southlake, TX",
-    before: imgBefore("1523217582562-09d0def993a6", 1600),
-    beforeAlt: "Empty lawn before the custom pool build",
-    after: img("1600596542815-ffad4c1539a9", 1600),
-    afterAlt: "Finished modern infinity-edge pool and deck",
+    title: "From the Build to the Reveal",
+    location: "Frisco, TX",
+    before: "/images/backyard-during.png",
+    beforeAlt:
+      "Stoneward crew building the pool, patio, and pergola during construction",
+    after: "/images/backyard-after-dusk.png",
+    afterAlt:
+      "The same backyard at dusk with the pool, fire feature, and landscape lighting glowing",
+    beforeLabel: "During build",
+    afterLabel: "After dark",
   },
 ];
 

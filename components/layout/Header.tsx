@@ -41,21 +41,28 @@ export function Header() {
         solid ? "bg-mist/95 shadow-soft backdrop-blur-md" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-[4.9rem] max-w-content items-center justify-between px-[var(--gutter)]">
-        <Link href="/" aria-label={`${SITE.studioName} — home`}>
+      <div className="mx-auto flex h-[4.9rem] max-w-[1480px] items-center justify-between gap-5 px-5 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          aria-label={`${SITE.studioName} — home`}
+          className="shrink-0"
+        >
           <Logo tone={solid ? "dark" : "light"} />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary">
-          {NAV.filter((i) => i.href !== "/contact").map((item) => {
+        <nav
+          className="hidden items-center gap-x-4 xl:flex 2xl:gap-x-6"
+          aria-label="Primary"
+        >
+          {NAV.filter((i) => i.href !== "/contact" && i.href !== "/").map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "link-underline whitespace-nowrap text-[0.78rem] font-semibold uppercase tracking-[0.1em] transition-colors",
+                  "link-underline whitespace-nowrap text-[0.76rem] font-semibold uppercase tracking-[0.07em] transition-colors",
                   solid ? "text-ink-soft" : "text-mist/90",
                   active && (solid ? "text-leaf-deep" : "text-mist"),
                 )}
@@ -66,11 +73,18 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-3">
+          <span
+            className={cn(
+              "hidden h-5 w-px xl:block",
+              solid ? "bg-ink/15" : "bg-mist/25",
+            )}
+            aria-hidden="true"
+          />
           <a
             href={CTA.call.href}
             className={cn(
-              "hidden items-center gap-2 rounded-full px-4 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.1em] transition-colors sm:inline-flex",
+              "hidden items-center gap-2 rounded-full px-3 py-2.5 text-[0.77rem] font-semibold uppercase tracking-[0.06em] transition-colors sm:inline-flex",
               solid
                 ? "text-ink hover:text-leaf-deep"
                 : "text-mist hover:text-leaf",
@@ -82,7 +96,7 @@ export function Header() {
           <Button
             href={CTA.estimate.href}
             variant="accent"
-            className="hidden sm:inline-flex"
+            className="hidden px-6 sm:inline-flex"
           >
             Free Estimate
           </Button>
